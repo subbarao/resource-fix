@@ -4,11 +4,13 @@ This project has 3 branches
 2.solution2
 3.solution3
 
-below files are used in 3 different solutions
+below files are used in all 3 solutions
 
 app/assets/javascripts/angular_app.coffee
+
 app/assets/javascripts/angular/services/post.coffee
-spect/javascripts/angular/services/post_spec.coffee
+
+spec/javascripts/angular/services/post_spec.coffee
 
 Running tests
 rake db:migrate
