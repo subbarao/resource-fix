@@ -1,28 +1,32 @@
-### Running tests
-* bundle install
-* rake db:migrate
-* bundle exec guard -i
+This project has 3 branches
 
-###  Branches
+1.solution1
+2.solution2
+3.solution3
 
-* solution1
-* solution2
-* solution3
+below files are used in all 3 solutions
 
-### Files 
+app/assets/javascripts/angular_app.coffee
 
-* app/assets/javascripts/angular_app.coffee
-* app/assets/javascripts/angular/services/post.coffee
-* spec/javascripts/angular/services/post_spec.coffee
+app/assets/javascripts/angular/services/post.coffee
 
+spec/javascripts/angular/services/post_spec.coffee
 
-### solution1
+Running tests
+rake db:migrate
+bundle exec guard -i
+
+solution1
 decroates angular $resource factory and adds new method
-$saveOrUpdate 
+$saveOrUpdate
+to handle new/existing records
 
-### solution2
+
+solution2
 decroates angular $resource factory and overrides
 $save
+to handle new/existing records
 
-## solution3
+
+solution3
 adds new factory bgResource
