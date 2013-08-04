@@ -9,15 +9,15 @@ describe 'Post', ->
     @httpBackend = $httpBackend
   )
 
-  describe '$saveOrUpdate', ->
+  describe '$save', ->
     beforeEach ->
       @fakeResponse = id: 2
 
-    it "should invoke save for new resource", ->
+    it "should post to create resource", ->
       @httpBackend.whenPOST('posts').respond(@fakeResponse)
-      @post.$saveOrUpdate()
+      @post.$save()
 
-    it "should invoke update for existing resource", ->
+    it "should put to update resource", ->
       @post.id = 2
       @httpBackend.whenPUT('posts/2').respond(@fakeResponse)
-      @post.$saveOrUpdate()
+      @post.$save()

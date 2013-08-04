@@ -3,27 +3,26 @@
 
 angular.
   module('angularApp', ['ngResource']).
-  config(['$provide', ($provide) ->
-    $provide.
-      decorator("$resource", ['$delegate', ($delegate) ->
-        (url, paramDefaults, actions)  ->
-          defaults =
-            update:
-              method: 'put'
-              isArray: false
-
-          resource = $delegate(url, paramDefaults, angular.extend(defaults, actions))
-          resource.prototype.$saveOrUpdate = ->
-            if @id then @$update() else @$save()
-
-          resource
-      ])
-  ]).
   config(["$httpProvider", ($httpProvider) ->
     meta = document.getElementsByTagName('meta')
     angular.forEach meta, (token) ->
       if token.name == 'csrf-token'
         $httpProvider.defaults.headers.common['X-CSRF-Token'] = token.content
+  ]).
+  factory('bgResource', ['$resource', ($resource) ->
+    (url, paramDefaults, actions)  ->
+      defaults =
+        create:
+          method: 'post'
+        update:
+          method: 'put'
+          isArray: false
+
+      bgResource = $resource(url, paramDefaults, angular.extend(defaults, actions))
+      bgResource.prototype.$save = ->
+        if @id then @$update() else @$create()
+
+      bgResource
   ]).
   factory('Post', ['$resource', ($resource) ->
     $resource('posts/:id', id: '@id')
