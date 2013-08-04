@@ -1,28 +1,30 @@
-== README
+#This project has 3 branches
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1.solution1
+2.solution2
+3.solution3
 
-Things you may want to cover:
+below files are used in 3 different solutions
 
-* Ruby version
+app/assets/javascripts/angular_app.coffee
+app/assets/javascripts/angular/services/post.coffee
+spect/javascripts/angular/services/post_spec.coffee
 
-* System dependencies
+### Running tests
+rake db:migrate
+bundle exec guard -i
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## solution1
+decroates angular $resource factory and adds new method
+$saveOrUpdate
+to handle new/existing records
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+## solution2
+decroates angular $resource factory and overrides
+$save
+to handle new/existing records
+
+
+## solution3
+adds new factory bgResource
