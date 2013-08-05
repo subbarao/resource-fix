@@ -8,8 +8,7 @@ angular.
     angular.forEach meta, (token) ->
       if token.name == 'csrf-token'
         $httpProvider.defaults.headers.common['X-CSRF-Token'] = token.content
-  ]).
-  factory('bgResource', ['$resource', ($resource) ->
+  ]).factory('bgResource', ['$resource', ($resource) ->
     (url, paramDefaults, actions)  ->
       defaults =
         create:
@@ -23,7 +22,6 @@ angular.
         if @id then @$update() else @$create()
 
       bgResource
-  ]).
-  factory('Post', ['$resource', ($resource) ->
+  ]).factory('Post', ['bgResource', ($resource) ->
     $resource('posts/:id', id: '@id')
   ])
