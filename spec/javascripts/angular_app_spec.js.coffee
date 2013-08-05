@@ -1,4 +1,4 @@
-#= require application
+#= require angular_app
 #= require angular-mocks
 
 describe 'Post', ->

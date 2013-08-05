@@ -1,3 +1,6 @@
+#= require angular
+#= require angular-resource
+
 angular.
   module('angularApp', ['ngResource']).
   config(['$provide', ($provide) ->
@@ -21,4 +24,7 @@ angular.
     angular.forEach meta, (token) ->
       if token.name == 'csrf-token'
         $httpProvider.defaults.headers.common['X-CSRF-Token'] = token.content
+  ]).
+  factory('Post', ['$resource', ($resource) ->
+    $resource('posts/:id', id: '@id')
   ])
