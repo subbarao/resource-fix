@@ -13,8 +13,9 @@ angular.
               isArray: false
 
           resource = $delegate(url, paramDefaults, angular.extend(defaults, actions))
-          resource.prototype.$saveOrUpdate = ->
-            if @id then @$update() else @$save()
+          resource.prototype.$saveWithoutUpdate = resource.prototype.$save
+          resource.prototype.$save = ->
+            if @id then @$update() else @$saveWithoutUpdate()
 
           resource
       ])
