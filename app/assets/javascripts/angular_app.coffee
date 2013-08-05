@@ -18,13 +18,11 @@ angular.
 
           resource
       ])
-  ]).
-  config(["$httpProvider", ($httpProvider) ->
+  ]).config(["$httpProvider", ($httpProvider) ->
     meta = document.getElementsByTagName('meta')
     angular.forEach meta, (token) ->
       if token.name == 'csrf-token'
         $httpProvider.defaults.headers.common['X-CSRF-Token'] = token.content
-  ]).
-  factory('Post', ['$resource', ($resource) ->
+  ]).factory('Post', ['$resource', ($resource) ->
     $resource('posts/:id', id: '@id')
   ])
